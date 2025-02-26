@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-img class="header-img" src="https://see.fontimg.com/api/renderfont4/WppKO/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjNkE2QTZBIiwiYmdjIjoiIzAwMDAwMCIsInQiOjF9/TGl0TG9vbQ/abocat.png"></ion-img>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-menu side="end" menuId="first" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item button (click)="goToProfile()">
+        <ion-icon slot="start" name="person-circle"></ion-icon>
+        <ion-label>Profile</ion-label>
+      </ion-item>
+      <ion-item button (click)="toggleSettings()">
+        <ion-icon slot="start" name="settings"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-item>
+      <ion-item button class="delete-account" (click)="deleteAccount()" *ngIf="settingsExpanded">
+        <ion-icon slot="start" name="" color="danger" class="small-icon"></ion-icon>
+        <ion-label color="danger" class="small-text">Delete Account</ion-label>
+      </ion-item>
+      <ion-item button (click)="logoutToggle()">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+        <ion-label>Logout</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar class="footer-toolbar">
+      <ion-title size="small" class="footer-text">© 2024 M2O</ion-title>
+      <ion-title size="small" class="footer-text">Developed by Moe Min</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>
+
+
+<ion-content id="main-content" [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="10" offset-md="1" size-lg="8" offset-lg="2">
+        <ion-searchbar placeholder="Search for books" (ionInput)="onSearchChange($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-md="10" offset-md="1" size-lg="8" offset-lg="2">
+        <ion-segment (ionChange)="segmentChanged($event)">
+          <ion-segment-button value="all" checked>
+            <ion-label>All</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="fiction">
+            <ion-label>Fiction</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="non-fiction">
+            <ion-label>Non-Fiction</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let book of filteredBooks">
+        <ion-card class="equal-height-card" (click)="selectBook(book)">
+          <ion-img [src]="book.image" alt="Book Cover"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{ book.title }}</ion-card-title>
+            <ion-card-subtitle>{{ book.author }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Price: {{ book.price }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-button (click)="goList()">Lists</ion-button> -->
+</ion-content>

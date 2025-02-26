@@ -1,0 +1,32 @@
+<!-- src/app/pages/book-list/book-list.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Book List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Total Books: {{ totalBooks }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngFor="let author of bookCountByAuthor | keyvalue">
+    <ion-card-header>
+      <ion-card-title>{{ author.key }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Number of Books: {{ author.value }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col><strong>Book Title</strong></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let book of books">
+      <ion-col>{{ book.title }}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

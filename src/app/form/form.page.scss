@@ -1,0 +1,98 @@
+.content-fullscreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  margin-top: 30px;
+  max-width: 400px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.form-container h3 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #4a90e2;
+}
+
+p {
+  color: gray;
+}
+
+.animated-icon {
+  font-size: 50px;
+  color: rgb(151, 148, 148);
+  animation: rotateIcon 2s infinite linear;
+}
+
+ion-item {
+  --background: #f9f9f9;
+  --border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 8px;
+  transition: background-color 0.3s;
+}
+
+ion-item:focus-within {
+  --background: #e0f7fa;
+}
+
+ion-input, ion-select, ion-datetime {
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+
+ion-button {
+  --background: #4a90e2;
+  --background-hover: #357ab7;
+  --background-activated: #2e5d93;
+  --border-radius: 8px;
+  --padding-start: 15px;
+  --padding-end: 15px;
+}
+
+ion-icon {
+  color: #4a90e2;
+  margin-right: 10px;
+}
+
+.create-account {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.create-account p {
+  font-size: 0.8em;
+  color: #555;
+}
+
+.create-account a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a {
+  cursor: pointer;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}

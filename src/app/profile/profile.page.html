@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="form-container">
+    <ion-card>
+      <ion-card-header>
+        <div class="profile-header">
+          <div class="user-info">
+            <div class="user-image-container">
+              <img [src]="profileForm.value.image || 'https://media.istockphoto.com/id/1136668076/photo/bearded-male-gesturing-thumb-ups.jpg?s=612x612&w=0&k=20&c=XhPbOnHcZINnphlWl0sDLIj8Tm9WCW8cVxbKheHAGRI='" alt="user image" class="user-image">
+              <ion-button *ngIf="isEditMode" fill="clear" class="camera-button" (click)="openImageOptions()">
+                <ion-icon name="camera-outline"></ion-icon>
+              </ion-button>
+            </div>
+            <div class="user-details">
+              <ion-card-title class="user-name">{{ user.name || '---' }}</ion-card-title>
+              <ion-label class="user-job">{{ user.job || '---' }}</ion-label>
+            </div>
+          </div>
+          <ion-button fill="clear" size="large" (click)="toggleEditMode()">
+            <ion-icon slot="icon-only" name="{{ isEditMode ? 'close-outline' : 'create-outline' }}"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-header>
+      <ion-card-content *ngIf="!isEditMode">
+        <ion-item lines="none">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label>Email</ion-label>
+          <ion-text>{{ user.email  || '---'  }}</ion-text>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-label>Password</ion-label>
+          <ion-text>{{ '********' || '---' }}</ion-text>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <ion-label>DOB</ion-label>
+          <ion-text>{{ user.dob || '---' }}</ion-text>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="school-outline" slot="start"></ion-icon>
+          <ion-label>Education</ion-label>
+          <ion-text>{{ user.education || '---' }}</ion-text>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="briefcase-outline" slot="start"></ion-icon>
+          <ion-label>Job</ion-label>
+          <ion-text>{{ user.job || '---' }}</ion-text>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="cash-outline" slot="start"></ion-icon>
+          <ion-label>Salary</ion-label>
+          <ion-text>{{ user.salary || '---' }} {{" MMK"}}</ion-text>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-label>Address</ion-label>
+          <ion-text>{{ user.address || '---' }}</ion-text>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <div *ngIf="isEditMode">
+      <form [formGroup]="profileForm" (ngSubmit)="onUpdateProfile()">
+        <ion-item>
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <ion-label position="floating">DOB</ion-label>
+          <ion-input type="text" formControlName="dob"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="school-outline" slot="start"></ion-icon>
+          <ion-label position="floating">Education</ion-label>
+          <ion-select formControlName="education" interface="action-sheet">
+            <ion-select-option value="High School">High School</ion-select-option>
+            <ion-select-option value="Bachelor's">Bachelor's</ion-select-option>
+            <ion-select-option value="Master's">Master's</ion-select-option>
+            <ion-select-option value="Doctorate">Doctorate</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="briefcase-outline" slot="start"></ion-icon>
+          <ion-label position="floating">Job</ion-label>
+          <ion-input type="text" formControlName="job"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="cash-outline" slot="start"></ion-icon>
+          <ion-label position="floating">Salary</ion-label>
+          <ion-input type="text" formControlName="salary"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input type="text" formControlName="address"></ion-input>
+        </ion-item>
+        <ion-button expand="block" type="submit">Update</ion-button>
+      </form>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ book?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-img [src]="book?.image" alt="Book Cover"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{ book?.title }}</ion-card-title>
+      <ion-card-subtitle>{{ book?.author }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Price:</strong> {{ book?.price }}</p>
+      <p><strong>Category:</strong> {{ book?.category }}</p>
+      <p><strong>Description:</strong> {{book?.description}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
